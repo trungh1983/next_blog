@@ -14,9 +14,6 @@ export default function RootLayout({ children }) {
             <Link className="nav-link" href="/dashboard">
               Dashboard
             </Link>
-            <Link className="nav-link" href="/register">
-              Register
-            </Link>
           </nav>
         </header>
         <main>{children}</main>
