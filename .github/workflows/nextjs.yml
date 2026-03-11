@@ -73,6 +73,12 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
+      - name: Remove 'use server' directive
+        run: |
+         sed -i 's/"use server";//g' node_modules/@storyblok/react/dist/live-edit-update-action.mjs
+         sed -i 's/"use server";//g' node_modules/@storyblok/react/dist/live-edit-update-action.js
+        
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
